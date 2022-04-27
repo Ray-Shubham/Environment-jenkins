@@ -26,7 +26,7 @@ sh 'echo $AAA_STAGE_LEVEL_VAR'
 sh 'env | sort'
 }
 }
-stage('stage1'){
+stage('stage4'){
 steps{
 sh 'echo $AAA_RANDOM_VAR'
 sh 'env | sort'
