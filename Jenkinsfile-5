@@ -1,0 +1,47 @@
+pipelne{
+agent any
+environment{
+AAA_TOP_LEVEL_VAR = 'topLevel'
+AAA_RANDOM_VAR = sh(returnStdout:true,script:'openssl rand -base64 19').trim()
+AAA_SECRET_TEXT = credentials('secret-text')
+}
+stages{
+stage('stage1'){
+steps{
+sh 'echo $AAA_TOP_LEVEL_VAR'
+sh 'env | sort'
+}
+}
+stages{
+stage('stage2'){
+environment{
+AAA_STAGE_LEVEL_VAR = 'stageLevel'
+}
+steps{
+sh 'echo $AAA_STAGE_LEVEL_VAR'
+sh 'env | sort'
+}
+}
+stages{
+stage('stage3'){
+steps{
+sh 'echo $AAA_STAGE_LEVEL_VAR'
+sh 'env | sort'
+}
+}
+stages{
+stage('stage4'){
+steps{
+sh 'echo $AAA_RANDOM_VAR'
+sh 'env | sort'
+}
+}
+stages{
+stage('stage5'){
+steps{
+sh 'echo $AAA_SECRET_TEXT'
+sh 'env | sort'
+}
+}
+}
+}
