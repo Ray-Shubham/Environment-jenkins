@@ -3,7 +3,7 @@ agent any
 environment{
 AAA_TOP_LEVEL_VAR = 'topLevel'
 AAA_RANDOM_VAR = sh(returnStdout:true,script:'openssl rand -base64 19').trim()
-AAA_SECRET_TEXT = credentials('secret-text')
+//AAA_SECRET_TEXT = credentials('secret-text')
 }
 stages{
 stage('stage1'){
